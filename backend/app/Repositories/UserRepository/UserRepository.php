@@ -3,7 +3,6 @@
 namespace App\Repositories\UserRepository;
 
 use App\Models\User;
-use phpDocumentor\Reflection\Types\Integer;
 
 class UserRepository
 {
@@ -22,12 +21,12 @@ class UserRepository
     }
 
     /**
-     * @param Integer $id
+     * @param int $id
      * @return User
      */
-    public function find(Integer $id): User
+    public function find(int $id): User
     {
-        return $this->model->where('id', $id)->get();
+        return $this->model->where('id', $id)->firstOrfail();
     }
 
     /**

@@ -3,7 +3,6 @@
 namespace App\Repositories\CardRepository;
 
 use App\Models\Card;
-use phpDocumentor\Reflection\Types\Integer;
 
 class CardRepository
 {
@@ -21,16 +20,16 @@ class CardRepository
         $this->model = $model;
     }
 
-    public function findCard(Integer $id)
+    public function findCard(int $id)
     {
 
     }
 
     /**
-     * @param Integer $userId
+     * @param int $userId
      * @return Card
      */
-    public function findAllUserCards(Integer $userId): Card
+    public function findAllUserCards(int $userId): Card
     {
         return $this->model->where('user_id', $userId)->get();
     }
@@ -45,20 +44,20 @@ class CardRepository
     }
 
     /**
-     * @param Integer $id
+     * @param int $id
      * @param array $attributes
      * @return Card
      */
-    public function update(Integer $id, array $attributes): Card
+    public function update(int $id, array $attributes): Card
     {
         return $this->model->find($id)->update($attributes);
     }
 
     /**
-     * @param Integer $id
+     * @param int $id
      * @return Card
      */
-    public function delete(Integer $id): Card
+    public function delete(int $id): Card
     {
         return $this->model->find($id)->delete();
     }
