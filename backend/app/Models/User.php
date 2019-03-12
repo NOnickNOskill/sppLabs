@@ -43,4 +43,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Card::class);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }

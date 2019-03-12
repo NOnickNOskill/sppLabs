@@ -16,15 +16,17 @@ use Illuminate\Http\Request;
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });*/
+Route::group(['middleware' => ['jwt.verify']], function() {
 
-Route::group(['prefix' => 'user'], function () {
-   Route::get('/{id}', 'UserController@index');
-   Route::post('/', 'UserController@create');
-});
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('/{id}', 'UserController@index');
+        Route::post('/', 'UserController@create');
+    });
 
-Route::group(['prefix' => 'card'], function () {
-    Route::get('/{id}', 'CardController@index');
-    Route::post('/', 'CardController@store');
-    Route::put('/{id}', 'CardController@update');
-    Route::delete('/{id}', 'CardController@delete');
+    Route::group(['prefix' => 'card'], function () {
+        Route::get('/{id}', 'CardController@index');
+        Route::post('/', 'CardController@store');
+        Route::put('/{id}', 'CardController@update');
+        Route::delete('/{id}', 'CardController@delete');
+    });
 });
